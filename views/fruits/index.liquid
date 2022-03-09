@@ -1,0 +1,23 @@
+<!-- we're serving block content in layout.liquid -->
+<!-- so we need to inform all our blocks(files) -->
+{% layout 'layout.liquid'%}
+<!-- here we start our block content -->
+{% block content %}
+    <div>
+        {% for fruit in fruits %}
+            <article>
+                <a href="/fruits/{{ fruit.id }}">
+                    <h2>
+                        {{ fruit.name }}
+                        {% if fruit.readyToEat %}
+                            Ripe
+                        {% else %}
+                            Not Ripe
+                        {% endif %}
+                    </h2>
+                </a>
+            </article>
+        {% endfor %}
+        <a href="fruits/new"><button>Create New Fruit</button></a>
+    </div>
+{% endblock %}
